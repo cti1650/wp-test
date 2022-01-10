@@ -30,3 +30,5 @@ docker-compose down --volumes
 - [Docker Composeとは？使い方やコマンドを紹介（Rails,MySQL,Nginx） | キツネの惑星](https://kitsune.blog/docker-compose)
 
 - [Dockerで作ったWordPress環境にWP-CLIを追加する方法](https://samurai-project.com/articles/3413)
+
+- [ZIP形式で配布されているプラグインをインストールする](https://www.javadrive.jp/wordpress/plugin/index2.html)
