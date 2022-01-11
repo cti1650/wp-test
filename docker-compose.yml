@@ -20,12 +20,29 @@ services:
      image: wordpress:latest
      volumes:
        - ./wordpress:/var/www/html
+       - ./my-theme:/var/www/html/wp-content/themes/my-theme
+       - ./my-plugin:/var/www/html/wp-content/plugins/my-plugin
      ports:
        - "8000:80"
      restart: always
      environment:
+       TZ: 'Asia/Tokyo'
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: wordpress
+       
+   wpcli:
+     container_name: wpcli
+     image: wordpress:cli-php7.4
+     working_dir: /var/www/html
+     depends_on:
+       - wordpress
+       - db
+     volumes:
+       - ./wordpress:/var/www/html
+       - ./my-theme:/var/www/html/wp-content/themes/my-theme
+       - ./my-plugin:/var/www/html/wp-content/plugins/my-plugin
+     command: "--info"
+     user: xfs
 volumes:
     db_data:
