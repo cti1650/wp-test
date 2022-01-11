@@ -44,3 +44,11 @@ docker-compose down --volumes
 - [Dockerで作ったWordPress環境にWP-CLIを追加する方法](https://samurai-project.com/articles/3413)
 
 - [ZIP形式で配布されているプラグインをインストールする](https://www.javadrive.jp/wordpress/plugin/index2.html)
+
+- [Docker Composeで簡単便利な砂場作り | サイドスリーブログ | 神戸のWeb制作会社 株式会社サイドスリー](https://www.sidethree.co.jp/blog/memo/202109-1.html)
+
+- [DockerfileのCOPYでファイルやディレクトリごとコンテナにコピーする - ライトリ](https://litely.net/post/tech/docker/reference/dockerfile_copy/)
+
+- [ローカル開発環境を作り易いDockerfileのフォルダ構成 - Qiita](https://qiita.com/sgswtky/items/01650a041b581ffd83f7)
+
+- [Docker ComposeでDockerfileをビルドする際に親ディレクトリのファイルをコピーする](https://zukucode.com/2020/08/docker-compose-parent-directory.html)
