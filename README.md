@@ -19,6 +19,18 @@ docker-compose up -d
 docker-compose down --volumes
 ```
 
+### WP-CLI動作確認
+
+- WordPress設定確認
+    ```
+    docker-compose run --rm wpcli --info
+    ```
+
+- WordPress CLI バージョン
+    ```
+    docker-compose run --rm wpcli core version
+    ```
+
 ## 参考
 
 - [【超初心者向け】DockerでWordPressをサクッと構築 | DevelopersIO](https://dev.classmethod.jp/articles/beginner-docker-wordpress/)
