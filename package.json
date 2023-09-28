@@ -1,0 +1,14 @@
+{
+  "name": "wp-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/cti1650/wp-test.git",
+  "author": "cti1650 <cti1650@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "docker-compose build --no-cache",
+    "start": "docker-compose up -d --build",
+    "stop": "docker-compose stop",
+    "down": "docker-compose down --volumes"
+  }
+}

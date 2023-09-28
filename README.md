@@ -52,3 +52,8 @@ docker-compose down --volumes
 - [ローカル開発環境を作り易いDockerfileのフォルダ構成 - Qiita](https://qiita.com/sgswtky/items/01650a041b581ffd83f7)
 
 - [Docker ComposeでDockerfileをビルドする際に親ディレクトリのファイルをコピーする](https://zukucode.com/2020/08/docker-compose-parent-directory.html)
+
+- [第167回　M1搭載MacのDockerでMySQLを動かしてみる | gihyo.jp](https://gihyo.jp/dev/serial/01/mysql-road-construction-news/0167)  
+
+- [Dockerでコンテナ起動後に「Error establishing a database connection 」と出てデータベースに接続できない時の対処法：Warning: mysqli_real_connect(): php_network_getaddresses: getaddrinfo failed:](https://prograshi.com/platform/docker/dokcer-wp-db-connection-error/)  
+

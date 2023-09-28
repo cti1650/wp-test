@@ -1,51 +1,53 @@
 version: '3'
 
 services:
-   db:
-     platform: linux/x86_64
-     image: mysql:5.7
-     volumes:
-       - db_data:/var/lib/mysql
-     restart: always
-     ports:
-       - "3306:3306"
-     environment:
-       MYSQL_ROOT_PASSWORD: somewordpress
-       MYSQL_DATABASE: wordpress
-       MYSQL_USER: wordpress
-       MYSQL_PASSWORD: wordpress
+  mysql:
+    # image: mysql/mysql-server:5.7
+    image: mysql:latest
+    platform: linux/amd64
+    volumes:
+      - v_mysql:/var/lib/mysql
+    ports:
+      # ポートを指定し、外部から接続させる
+      - "3306:3306"
+    # restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
 
-   wordpress:
-     depends_on:
-       - db
-     build:
-      context: .
-      dockerfile: ./images/wp/Dockerfile
-     volumes:
-       - ./wordpress:/var/www/html
-     ports:
-       - "8000:80"
-       - '443:443'
-     restart: always
-     environment:
-       TZ: 'Asia/Tokyo'
-       WORDPRESS_DB_HOST: db:3306
-       WORDPRESS_DB_USER: wordpress
-       WORDPRESS_DB_PASSWORD: wordpress
-       
-   wpcli:
-     container_name: wpcli
-     image: wordpress:cli-php7.4
-     working_dir: /var/www/html
-     depends_on:
-       - wordpress
-       - db
-     volumes:
-       - ./wordpress:/var/www/html
-     command: "--info"
-     user: xfs
-volumes:
-  db_data:
-    driver: local
   wordpress:
-    driver: local
+    depends_on:
+      - mysql
+    image: wordpress
+    volumes:
+      # - ./html:/var/www/html
+      - v_wordpress:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
+    ports:
+      - "8000:80"
+    # restart: always
+    environment:
+      TZ: "Asia/Tokyo"
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    platform: linux/amd64
+    # restart: always
+    depends_on:
+      - mysql
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: "mysql"
+
+    ports:
+      - 8888:80
+
+volumes:
+  v_mysql:
+  v_wordpress:
