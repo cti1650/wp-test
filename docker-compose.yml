@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   mysql:
@@ -47,6 +47,18 @@ services:
 
     ports:
       - 8888:80
+
+  wpcli:
+    container_name: wpcli
+    image: wordpress:cli-php7.4
+    working_dir: /var/www/html
+    depends_on:
+      - wordpress
+      - mysql
+    volumes:
+      - v_wordpress:/var/www/html
+    command: "--info"
+    user: xfs
 
 volumes:
   v_mysql:
